@@ -56,7 +56,7 @@ public class FileIO_Test {
 	// "AccomplishedTask.txt");
 	//
 	// }
-
+	//
 	// @Test
 	// public void appendToFile() {
 	// FileIO fileIO = new FileIO();
@@ -69,6 +69,19 @@ public class FileIO_Test {
 	// e.printStackTrace();
 	// }
 	//
+	// }
+
+	// @Test
+	// public void appendToFile2() {
+	// FileIO fileIO = new FileIO();
+	// String data = "Yay@!";
+	// try {
+	// fileIO.appendToFileByLine(System.getProperty("user.home") +
+	// "\\Desktop\\M\\textfile.txt", data);
+	// } catch (IOException e) {
+	// // TODO Auto-generated catch block
+	// e.printStackTrace();
+	// }
 	// }
 
 	// @Test
@@ -85,21 +98,37 @@ public class FileIO_Test {
 	//
 	// }
 
-	@Test
-	public void deleteFile() {
-		FileIO fileIO = new FileIO();
-		fileIO.deleteDirectory(System.getProperty("user.home") + "\\Desktop\\M\\overwrite.txt");
-	}
+	// @Test
+	// public void deleteFile() {
+	// FileIO fileIO = new FileIO();
+	// fileIO.deleteDirectory(System.getProperty("user.home") +
+	// "\\Desktop\\M\\overwrite.txt");
+	// }
+	//
+	// @Test
+	// public void deleteDirectory() {
+	// FileIO fileIO = new FileIO();
+	// fileIO.deleteDirectory(System.getProperty("user.home") + "\\Desktop\\M");
+	// }
+	// @Test
+	// public void deleteDirectory2() {
+	// FileIO fileIO = new FileIO();
+	// fileIO.deleteDirectory(System.getProperty("user.home") +
+	// "\\Desktop\\FolderName");
+	// }
 
-	@Test
-	public void deleteDirectory() {
-		FileIO fileIO = new FileIO();
-		fileIO.deleteDirectory(System.getProperty("user.home") + "\\Desktop\\M");
-	}
-	@Test
-	public void deleteDirectory2() {
-		FileIO fileIO = new FileIO();
-		fileIO.deleteDirectory(System.getProperty("user.home") + "\\Desktop\\FolderName");
-	}
-
+	// @Test
+	// public void copyDataFromFileToFile() {
+	// FileIO fileIO = new FileIO();
+	// fileIO.grabsContentFromFile(System.getProperty("user.home") +
+	// "\\Desktop\\FolderName\\Greeting.txt",
+	// System.getProperty("user.home") + "\\Desktop\\FolderName\\Message.txt");
+	// }
+	// @Test
+	// public void copyAndAppendDataFromFileToFile() {
+	// FileIO fileIO = new FileIO();
+	// fileIO.grabsContentFromFileAppend(System.getProperty("user.home") +
+	// "\\Desktop\\FolderName\\Greeting.txt",
+	// System.getProperty("user.home") + "\\Desktop\\FolderName\\Message.txt");
+	// }
 }

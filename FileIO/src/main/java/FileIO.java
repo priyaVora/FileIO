@@ -1,7 +1,9 @@
 
 import java.io.BufferedWriter;
+import java.io.Closeable;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.FilenameFilter;
 import java.io.IOException;
@@ -151,14 +153,38 @@ public class FileIO {
 	}
 
 	public void appendToFile(String path, String data) throws IOException {
-		File fileDir = new File(path);
 
-		Writer out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(fileDir), "UTF8"));
-		out.append(data).append("\r\n");
+		FileWriter fw = null;
+		try {
+			fw = new FileWriter(path, true);
 
-		out.append("\r\n");
-		out.flush();
-		out.close();
+			fw.write(data);
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			;
+			close(fw);
+		}
+
+	}
+
+	public void appendToFileByLine(String path, String data) throws IOException {
+
+		FileWriter fw = null;
+		try {
+			fw = new FileWriter(path, true);
+
+			fw.write(data);
+			fw.write("\r\n");
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			;
+			close(fw);
+		}
+
 	}
 
 	public void overwriteToFile(String path, String data) throws IOException {
@@ -171,19 +197,56 @@ public class FileIO {
 
 	}
 
-	public void deleteListOfFiles() {
+	public void grabsContentFromFile(String sourceFilePath, String destinationFilePath) {
+		FileReader fr = null;
+		FileWriter fw = null;
+		try {
+			fr = new FileReader(sourceFilePath);
+			fw = new FileWriter(destinationFilePath);
+			int c = fr.read();
+			while (c != -1) {
+				fw.write(c);
+				c = fr.read();
+			}
 
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			close(fr);
+			close(fw);
+		}
 	}
 
-	public void createDirectoryWithFolder() {
+	public void grabsContentFromFileAppend(String sourceFilePath, String destinationFilePath) {
+		FileReader fr = null;
+		FileWriter fw = null;
+		try {
+			fr = new FileReader(sourceFilePath);
+			fw = new FileWriter(destinationFilePath, true);
+			int c = fr.read();
+			fw.write("\r\n");
+			while (c != -1) {
+				fw.write(c);
+				// appendToFile(destinationFilePath, c + "");
+				c = fr.read();
+			}
 
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			close(fr);
+			close(fw);
+		}
 	}
 
-	public void createDirectory(ArrayList<File> listOfFiles) {
-
+	private static void close(Closeable stream) {
+		try {
+			if (stream != null) {
+				stream.close();
+			}
+		} catch (IOException e) {
+			// ...
+		}
 	}
 
-	public void createFile(String filename, String location) {
-
-	}
 }
