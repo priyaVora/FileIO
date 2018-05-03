@@ -12,8 +12,8 @@ public class FileIO {
 
 	}
 
-	public FileIO(String filename) {
-
+	public FileIO(String dir, String filename) {
+		createFile(dir, "", "", filename);
 	}
 
 	public boolean directoryExist(String path) {
@@ -22,7 +22,7 @@ public class FileIO {
 		return exists;
 	}
 
-	public void createDirectory(String dirPath, String folderLocation, String folderName, String filename,
+	private void createDirectory(String dirPath, String folderLocation, String folderName, String filename,
 			String data) {
 		String PATH = "";
 		String directoryName = PATH.concat(dirPath) + folderLocation + folderName;
@@ -48,6 +48,17 @@ public class FileIO {
 			e.printStackTrace();
 			System.exit(-1);
 		}
+	}
+
+	public void createFile_WithData(String dirPath, String folderLocation, String folderName, String filename,
+			String data) {
+		createDirectory(dirPath, folderLocation, folderName, filename, data);
+
+	}
+
+	public void createFile(String dirPath, String folderLocation, String folderName, String filename) {
+		createDirectory(dirPath, folderLocation, folderName, filename, "");
+
 	}
 
 	public void deleteDirectory(String path) {
@@ -130,7 +141,7 @@ public class FileIO {
 	}
 
 	public void createDirectoryWithFolder() {
-		
+
 	}
 
 	public void createDirectory(ArrayList<File> listOfFiles) {
