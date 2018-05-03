@@ -1,9 +1,12 @@
 
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.FilenameFilter;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
 import java.util.ArrayList;
 
 public class FileIO {
@@ -134,6 +137,27 @@ public class FileIO {
 			}
 		});
 		return listOfFiles;
+	}
+
+	public void appendToFile(String path, String data) throws IOException {
+		File fileDir = new File(path);
+
+		Writer out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(fileDir), "UTF8"));
+		out.append(data).append("\r\n");
+
+		out.append("\r\n");
+		out.flush();
+		out.close();
+	}
+
+	public void overwriteToFile(String path, String data) throws IOException {
+		File fileDir = new File(path);
+
+		Writer out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(fileDir), "UTF8"));
+		out.write(data);
+		out.flush();
+		out.close();
+
 	}
 
 	public void deleteListOfFiles() {
