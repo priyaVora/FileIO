@@ -25,6 +25,19 @@ public class FileIO {
 		return exists;
 	}
 
+	public void deleteDirectory(String dirPath) {
+		deleteAllFilesFromDirectory(dirPath);
+		File index = new File(dirPath);
+		if (!index.exists()) {
+			index.mkdir();
+		} else {
+			index.delete();
+			if (!index.exists()) {
+				index.mkdir();
+			}
+		}
+	}
+
 	private void createDirectory(String dirPath, String folderLocation, String folderName, String filename,
 			String data) {
 		String PATH = "";
@@ -35,7 +48,6 @@ public class FileIO {
 		} else {
 			fileName = filename + ".txt";
 		}
-		System.out.println("Directory Name: " + directoryName);
 		File directory = new File(directoryName);
 		if (!directory.exists()) {
 			directory.mkdir();
@@ -64,7 +76,7 @@ public class FileIO {
 
 	}
 
-	public void deleteDirectory(String path) {
+	public void deleteFile(String path) {
 		File f = new File(path);
 		f.delete();
 	}
@@ -73,7 +85,6 @@ public class FileIO {
 		File f = new File(path);
 
 		for (File eachFile : f.listFiles()) {
-			System.out.println(eachFile);
 			eachFile.delete();
 		}
 

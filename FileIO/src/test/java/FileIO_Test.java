@@ -71,17 +71,35 @@ public class FileIO_Test {
 	//
 	// }
 
-//	@Test
-//	public void overWriteToFile() {
-//		FileIO fileIO = new FileIO();
-//		String data = "Overwrite File Successful!";
-//		try {
-//			fileIO.overwriteToFile(System.getProperty("user.home") + "\\Desktop\\M\\overwrite.txt", data);
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//
-//	}
+	// @Test
+	// public void overWriteToFile() {
+	// FileIO fileIO = new FileIO();
+	// String data = "Overwrite File Successful!";
+	// try {
+	// fileIO.overwriteToFile(System.getProperty("user.home") +
+	// "\\Desktop\\M\\overwrite.txt", data);
+	// } catch (IOException e) {
+	// // TODO Auto-generated catch block
+	// e.printStackTrace();
+	// }
+	//
+	// }
+
+	@Test
+	public void deleteFile() {
+		FileIO fileIO = new FileIO();
+		fileIO.deleteDirectory(System.getProperty("user.home") + "\\Desktop\\M\\overwrite.txt");
+	}
+
+	@Test
+	public void deleteDirectory() {
+		FileIO fileIO = new FileIO();
+		fileIO.deleteDirectory(System.getProperty("user.home") + "\\Desktop\\M");
+	}
+	@Test
+	public void deleteDirectory2() {
+		FileIO fileIO = new FileIO();
+		fileIO.deleteDirectory(System.getProperty("user.home") + "\\Desktop\\FolderName");
+	}
 
 }
